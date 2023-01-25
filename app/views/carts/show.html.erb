@@ -7,7 +7,13 @@
   <% if cart_has_items? %>
     <%= render 'carts/_cart' %>
   <% else %>
-    <p>Your cart is empty</p>
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading"><i class="fa fa-shopping-cart fa-2x"></i>&nbsp;&nbsp;Your cart is empty</h4>  
+      <p>We have a wide variety of plants and flowers available for purchase on our website. Whether you're looking for something small and delicate or big and bold, we have the perfect plant for you. We also carry a selection of accessories, including potting soil, pots and containers, watering cans, and more.</p>
+      <hr>
+      <p class="mb-0">Looking for a way to add some life to your home? Look no further than our online plant shop!</p>
+      <p><a href="<%= root_path %>" class="alert-link">Shop for plants</a></p>
+    </div>
   <% end %>
 
 </section>
