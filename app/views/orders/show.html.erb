@@ -1,18 +1,16 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order Placed!</h1>
+    <h1>Order Placed 😊</h1>
   </header>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
     <p>Email: <%= @order.email %></p>
   </div>
-  <!--<%= @order.inspect %>
-  <%= @order.line_items.inspect %>-->
 
   <div class="panel panel-default items">
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th colspan="2">Product</th>
@@ -23,19 +21,21 @@
       </thead>
       <tbody>
         <% @order.line_items.each do |item| %>
-          item.product.image = <%=item.product.image%><br>
-          Product: <%=item.product.name%><br>
-          Quantity: <%=item.quantity%><br>
-          Unit Price: <%=humanized_money_with_symbol item.item_price_cents / 100.0 %><br>
-          Subtotal <%= humanized_money_with_symbol item.total_price_cents / 100.0 %><br>
-          Description: <%=item.product.description%><br>
-          <hr />
+          <%= render 'item', item: item %>
         <% end %>
       </tbody>
       <tfoot>
         <tr>
           <th colspan="4">
             ORDER TOTAL:
+          </th>
+          <th>
+            <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="4">
+            TOTAL CHARGED:
           </th>
           <th>
             <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
