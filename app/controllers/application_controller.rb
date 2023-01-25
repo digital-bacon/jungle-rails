@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :enhanced_cart
 
+  def cart_has_items?
+    self.enhanced_cart.length > 0
+  end
+  helper_method :cart_has_items?
+
   def cart_subtotal_cents
     enhanced_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum
   end
