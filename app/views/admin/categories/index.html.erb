@@ -1,4 +1,4 @@
-<section class="admin-products-index">
+<section class="admin-categories-index">
 
   <header class="page-header">
     <h1>Admin &raquo; All Categories</h1>
@@ -13,5 +13,19 @@
       Categories <span class="badge rounded-pill bg-info ms-4"><%= count_categories %></span>
     <% end %>
   </nav>
+
+  <div class="well">
+    <%= link_to '+ New Category', "#", class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default categories mt-4">
+
+    <table class="table">
+      <tbody>
+        <%= render @categories %>
+      </tbody>
+    </table>
+
+  </div>
 
 </section>
