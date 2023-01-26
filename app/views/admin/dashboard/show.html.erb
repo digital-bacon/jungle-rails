@@ -1,5 +1,21 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
-Total products: <%= count_products %>
-<br>
-Total categories: <%= count_categories %>
+<section class="admin-dashboard-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; Dashboard</h1>
+  </header>
+
+  <nav class="nav nav-tabs">
+    <%= link_to 'Dashboard', [:admin, :root], class: "nav-link active" %>
+    <%= link_to [:admin, :products], :class => "nav-link" do %>
+      Products <span class="badge rounded-pill bg-info ms-4"><%= count_products %></span>
+    <% end %>
+    <%= link_to root_path, :class => "nav-link" do %>
+      Categories <span class="badge rounded-pill bg-info ms-4"><%= count_categories %></span>
+    <% end %>
+  </nav>
+
+  <article>
+    <p>content-here</p>
+  </article>
+  
+</section>
