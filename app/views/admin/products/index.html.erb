@@ -9,7 +9,7 @@
     <%= link_to [:admin, :products], :class => "nav-link active" do %>
       Products <span class="badge rounded-pill bg-info ms-4"><%= count_products %></span>
     <% end %>
-    <%= link_to root_path, :class => "nav-link" do %>
+    <%= link_to [:admin, :categories], :class => "nav-link" do %>
       Categories <span class="badge rounded-pill bg-info ms-4"><%= count_categories %></span>
     <% end %>
   </nav>
