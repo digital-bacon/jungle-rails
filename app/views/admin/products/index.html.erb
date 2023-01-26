@@ -4,6 +4,16 @@
     <h1>Admin &raquo; All Products</h1>
   </header>
 
+  <nav class="nav nav-tabs mb-4">
+    <%= link_to 'Dashboard', [:admin, :root], class: "nav-link" %>
+    <%= link_to [:admin, :products], :class => "nav-link active" do %>
+      Products <span class="badge rounded-pill bg-info ms-4"><%= count_products %></span>
+    <% end %>
+    <%= link_to root_path, :class => "nav-link" do %>
+      Categories <span class="badge rounded-pill bg-info ms-4"><%= count_categories %></span>
+    <% end %>
+  </nav>
+
   <div class="well">
     <%= link_to '+ New Product', [:new, :admin, :product], class: 'btn btn-info' %>
   </div>

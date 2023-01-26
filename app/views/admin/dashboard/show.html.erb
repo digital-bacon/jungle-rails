@@ -4,7 +4,7 @@
     <h1>Admin &raquo; Dashboard</h1>
   </header>
 
-  <nav class="nav nav-tabs">
+  <nav class="nav nav-tabs mb-4">
     <%= link_to 'Dashboard', [:admin, :root], class: "nav-link active" %>
     <%= link_to [:admin, :products], :class => "nav-link" do %>
       Products <span class="badge rounded-pill bg-info ms-4"><%= count_products %></span>
