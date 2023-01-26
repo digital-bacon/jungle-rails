@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   helper_method :enhanced_cart
 
   def cart_has_items?
-    self.enhanced_cart.length > 0
+    self.enhanced_cart.size > 0
   end
   helper_method :cart_has_items?
 
