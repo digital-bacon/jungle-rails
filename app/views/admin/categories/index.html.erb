@@ -1,0 +1,17 @@
+<section class="admin-products-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; All Categories</h1>
+  </header>
+
+  <nav class="nav nav-tabs mb-4">
+    <%= link_to 'Dashboard', [:admin, :root], class: "nav-link" %>
+    <%= link_to [:admin, :products], :class => "nav-link" do %>
+      Products <span class="badge rounded-pill bg-info ms-4"><%= count_products %></span>
+    <% end %>
+    <%= link_to root_path, :class => "nav-link active" do %>
+      Categories <span class="badge rounded-pill bg-info ms-4"><%= count_categories %></span>
+    <% end %>
+  </nav>
+
+</section>
