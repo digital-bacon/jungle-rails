@@ -1,9 +1,9 @@
 <h1>Login</h1>
 
-<%= form_tag '/login' do %>
+<%= bootstrap_form_tag url: '/login' do |form| %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <%= form.text_field :email, required: true %>
+  <%= form.password_field :password, required: true %>
+  <%= form.submit %>
 
 <% end %>
