@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :about, only: [:index]
   resources :users, only: [:new, :create], path_names: { new: 'signup' }
+  resources :sessions, only: [:new, :create, :destroy]
 
   resource :cart, only: [:show] do
     post   :add_item
