@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
   resources :about, only: [:index]
-  resources :users, only: [:new, :create], path_names: { new: 'signup' }
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create],
+    path_names: { new: 'signup' }
+  resources :sessions, only: [:new, :create, :destroy],
+    path_names: { new: 'login', create: 'login', destroy: 'logout' }
 
   resource :cart, only: [:show] do
     post   :add_item
