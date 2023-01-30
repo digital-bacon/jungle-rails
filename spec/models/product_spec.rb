@@ -25,5 +25,11 @@ RSpec.describe Product, type: :model do
       @product.save
       expect(@product.errors[:price]).to be_present
     end
+
+    it "should not allow a product to be created without a quantity" do
+      @product.quantity = nil
+      @product.save
+      expect(@product.errors[:quantity]).to be_present
+    end
   end
 end
