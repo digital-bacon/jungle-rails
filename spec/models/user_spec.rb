@@ -62,6 +62,15 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "given a password that's too short" do
+      it "should not allow a user to be created and return an error" do
+        @user.password = "321Pass"
+        @user.password_confirmation = "321Pass"
+        @user.save
+        expect(@user.errors[:password]).to include("is too short (minimum is 8 characters)")
+      end
+    end
+
   end
   
 end
