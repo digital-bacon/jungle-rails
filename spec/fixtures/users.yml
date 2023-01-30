@@ -1,0 +1,5 @@
+marko:
+  first_name: Marko
+  last_name: Anastasov
+  email: marko.anastasov@test.com
+  password_digest: $2a$04$D.qdr1XMkBWGsKamnS9sk.zTItKFfUdOvwuqgcBAFnDt/5GmSWdCS
