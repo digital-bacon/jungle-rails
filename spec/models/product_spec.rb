@@ -18,5 +18,12 @@ RSpec.describe Product, type: :model do
       @product.save
       expect(@product.errors[:name]).to be_present
     end
+
+    it "should not allow a product to be created without a price" do
+      @product.price = nil
+      @product.price_cents = nil
+      @product.save
+      expect(@product.errors[:price]).to be_present
+    end
   end
 end
