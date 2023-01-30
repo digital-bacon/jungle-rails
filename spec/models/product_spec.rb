@@ -7,15 +7,15 @@ RSpec.describe Product, type: :model do
     @product = Product.new(name: 'Test Product Name', price: 23.21, quantity: 3, category: @category)
   end
 
-  describe "validates" do
-    context "given valid product inputs" do
+  describe "validation" do
+    context "when given valid product inputs" do
       it "should create a product with no errors" do
         @product.save
         expect(@product.errors).to be_empty
       end
     end
 
-    context "given an empty name" do
+    context "when given an empty name" do
       it "should not allow a product to be created and return an error" do
         @product.name = nil
         @product.save
@@ -23,7 +23,7 @@ RSpec.describe Product, type: :model do
       end
     end
 
-    context "given an empty price" do
+    context "when given an empty price" do
       it "should not allow a product to be created and return an error" do
         @product.price = nil
         @product.price_cents = nil
@@ -32,7 +32,7 @@ RSpec.describe Product, type: :model do
       end
     end
 
-    context "given an empty quantity" do
+    context "when given an empty quantity" do
       it "should not allow a product to be created and return an error" do
         @product.quantity = nil
         @product.save
@@ -40,7 +40,7 @@ RSpec.describe Product, type: :model do
       end
     end
 
-    context "given an empty category" do
+    context "when given an empty category" do
       it "should not allow a product to be created and return an error" do
         @product.category = nil
         @product.save
