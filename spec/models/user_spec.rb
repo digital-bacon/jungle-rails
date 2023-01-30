@@ -11,6 +11,13 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.errors).to be_empty
     end
+
+    it "should not allow a user to be created without a first name" do
+      @user.first_name = nil
+      @user.save
+      expect(@user.errors[:first_name]).to include("can't be blank")
+    end
+
   end
   
 end
