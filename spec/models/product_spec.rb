@@ -13,5 +13,10 @@ RSpec.describe Product, type: :model do
       expect(@product.errors).to be_empty
     end
 
+    it "should not allow a product to be created without a name" do
+      @product.name = nil
+      @product.save
+      expect(@product.errors[:name]).to be_present
+    end
   end
 end
