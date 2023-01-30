@@ -24,6 +24,12 @@ RSpec.describe User, type: :model do
       expect(@user.errors[:last_name]).to include("can't be blank")
     end
 
+    it "should not allow a user to be created without an email" do
+      @user.email = nil
+      @user.save
+      expect(@user.errors[:email]).to include("can't be blank")
+    end
+
   end
   
 end
