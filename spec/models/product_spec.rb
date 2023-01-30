@@ -31,5 +31,11 @@ RSpec.describe Product, type: :model do
       @product.save
       expect(@product.errors[:quantity]).to be_present
     end
+
+    it "should not allow a product to be created without a category" do
+      @product.category = nil
+      @product.save
+      expect(@product.errors[:category]).to be_present
+    end
   end
 end
