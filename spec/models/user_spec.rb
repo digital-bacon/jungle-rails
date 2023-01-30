@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+
+  fixtures :all
   
   before(:each) do
     @user = User.new(first_name: 'First', last_name: 'Last', email: 'test@email.com', password: '123Password', password_confirmation: '123Password')
@@ -68,6 +70,15 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = "321Pass"
         @user.save
         expect(@user.errors[:password]).to include("is too short (minimum is 8 characters)")
+      end
+    end
+
+    context "given an email that's already taken" do
+      it "should not allow a user to be created and return an error" do
+        fixture_user = users(:marko)
+        @user.email = "marko.anastasov@test.com"
+        @user.save
+        expect(@user.errors[:email]).to include("has already been taken")
       end
     end
 
