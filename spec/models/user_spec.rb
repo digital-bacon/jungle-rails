@@ -30,6 +30,12 @@ RSpec.describe User, type: :model do
       expect(@user.errors[:email]).to include("can't be blank")
     end
 
+    it "should not allow a user to be created without a password" do
+      @user.password = nil
+      @user.save
+      expect(@user.errors[:password]).to include("can't be blank")
+    end
+
   end
   
 end
