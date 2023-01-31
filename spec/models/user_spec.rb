@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   
   describe "validation" do
     
-    before(:each) do
+    before(:all) do
       @user = User.new(first_name: 'First', last_name: 'Last', email: 'test@email.com', password: '123Password', password_confirmation: '123Password')
     end
     

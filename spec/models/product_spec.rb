@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
 
-  before(:each) do
-    @category = Category.find_or_create_by! name: 'Test Category name'
-    @product = Product.new(name: 'Test Product Name', price: 23.21, quantity: 3, category: @category)
-  end
-
   describe "validation" do
+    before(:all) do
+      @category = Category.find_or_create_by! name: 'Test Category name'
+      @product = Product.new(name: 'Test Product Name', price: 23.21, quantity: 3, category: @category)
+    end
+    
     context "when given valid product inputs" do
       it "should create a product with no errors" do
         @product.save
