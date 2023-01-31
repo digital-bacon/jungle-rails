@@ -59,6 +59,8 @@ group :development, :test do
   # Adds support for RSpec testing
   gem 'rspec-rails', '~> 5.1'
   gem 'net-smtp', require: false
+  gem "cypress-rails"
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
