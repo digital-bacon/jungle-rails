@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
   end
 
   describe ".authenticate_with_credentials" do
-    before(:each) do
+    before(:all) do
       @user = User.new(first_name: 'First', last_name: 'Last', email: 'test@email.com', password: '123Password', password_confirmation: '123Password')
     end
 
@@ -101,27 +101,33 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context "when email has whitespace" do
+    context "when provided an email with whitespace" do
       it "should authenticate normally" do
         expect(user = User.authenticate_with_credentials(' test@email.com  ', '123password')).to eql(user)
       end
     end
 
-    context "when email is mixed case" do
+    context "when provided a mixed case email" do
       it "should authenticate normally" do
         expect(user = User.authenticate_with_credentials('TEST@email.com', '123password')).to eql(user)
       end
     end
 
-    context "when email is empty" do
+    context "when provided an empty email" do
       it "should not authenticate the user" do
         expect(user = User.authenticate_with_credentials('', '123password')).to be(nil)
       end
     end
 
-    context "when password is empty" do
+    context "when provided an empty password" do
       it "should not authenticate the user" do
         expect(user = User.authenticate_with_credentials('test@email.com', '')).to be(nil)
+      end
+    end
+
+    context "when provided a password that exactly matches the stored password_digest string" do
+      it "should not authenticate the user" do
+        expect(user = User.authenticate_with_credentials('test@email.com', @user.password_digest)).to be(nil)
       end
     end
 
