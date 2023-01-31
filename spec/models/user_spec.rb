@@ -4,11 +4,12 @@ RSpec.describe User, type: :model do
 
   fixtures :all
   
-  before(:each) do
-    @user = User.new(first_name: 'First', last_name: 'Last', email: 'test@email.com', password: '123Password', password_confirmation: '123Password')
-  end
-
   describe "validation" do
+    
+    before(:each) do
+      @user = User.new(first_name: 'First', last_name: 'Last', email: 'test@email.com', password: '123Password', password_confirmation: '123Password')
+    end
+    
     context "when given valid user inputs" do
       it "should create a user with no errors" do
         @user.save
@@ -85,6 +86,18 @@ RSpec.describe User, type: :model do
         @user.email = "marko.anastasov@test.com"
         @user.save
         expect(@user.errors[:email]).to include("has already been taken")
+      end
+    end
+  end
+
+  describe ".authenticate_with_credentials" do
+    before(:each) do
+      @user = User.new(first_name: 'First', last_name: 'Last', email: 'test@email.com', password: '123Password', password_confirmation: '123Password')
+    end
+
+    context "when a user is verified" do
+      it "should authenticate normally" do
+        expect(user = User.authenticate_with_credentials('test@email.com', '123password')).to eql(user)
       end
     end
 
