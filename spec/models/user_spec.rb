@@ -119,6 +119,12 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "when password is empty" do
+      it "should not authenticate the user" do
+        expect(user = User.authenticate_with_credentials('test@email.com', '')).to be(nil)
+      end
+    end
+
   end
   
 end
