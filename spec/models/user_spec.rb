@@ -107,6 +107,12 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "when email is mixed case" do
+      it "should authenticate normally" do
+        expect(user = User.authenticate_with_credentials('TEST@email.com', '123password')).to eql(user)
+      end
+    end
+
     context "when email is empty" do
       it "should not authenticate the user" do
         expect(user = User.authenticate_with_credentials('', '123password')).to be(nil)
