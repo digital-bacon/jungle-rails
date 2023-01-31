@@ -101,6 +101,12 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "when email has whitespace" do
+      it "should authenticate normally" do
+        expect(user = User.authenticate_with_credentials(' test@email.com  ', '123password')).to eql(user)
+      end
+    end
+
     context "when email is empty" do
       it "should not authenticate the user" do
         expect(user = User.authenticate_with_credentials('', '123password')).to be(nil)
